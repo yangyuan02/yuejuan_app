@@ -1,0 +1,24 @@
+.funList{
+	margin-top:.31rem;
+}
+.funList ul{
+	display:flex;
+	display: -webkit-flex;
+	width:100%;
+	justify-content:space-around;
+}
+.funList ul p{
+	text-align:center;
+}
+.funList .itme{
+	width:0.6rem;
+	height:0.6rem;
+}
+.funList .itme01{
+	background: url(../img/fun1.png);
+	background-size:100%;
+}
+.funList .itme02{
+	background: url(../img/fun2.png);
+	background-size:100%;
+}

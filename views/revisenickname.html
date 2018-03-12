@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/exam_list.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+			if(document.documentElement.clientWidth >= 540) {
+				document.documentElement.style.fontSize = 540 / 3.75 + 'px';
+			}
+		</script>
+		<style type="text/css">
+			body {
+				background: #F4F4F4;
+			}
+
+
+			.iphone_bar{
+				height:.4rem;
+			}
+			.iphone_bar input{
+				height:.4rem;
+				font-size:.14rem;
+				border-left: 0;
+				border-right: 0;
+				border-radius:0;
+			}
+		
+			.bind_box{
+				/*padding: 0 rem;*/
+				padding-top:10%;
+				width: 100%;
+				border-top:1px solid rgba(0, 0, 0, 0.2);
+			}	
+			.note{
+				margin-top: 1%;
+				padding-left: .15rem;
+				font-size: .12rem;
+			}
+			#know{
+				display:flex;
+				justify-content: center;
+				margin-top:.2rem;
+				padding: .3rem .16rem;
+			}
+			#know a{
+				width:100%;
+				height:.4rem;
+				line-height:.4rem;
+				display:inline-block;
+				text-align: center;
+				font-size:.16rem;
+				color:#fff;
+				border-radius:4px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="bind_box">
+			 <div class="mui-input-row iphone_bar">
+		       <!-- <label>快速删除</label>-->
+		        <input type="text" autofocus="autofocus" class="mui-input-clear" placeholder="请输入昵称" id="changeName">
+
+		    </div>
+		    <p class="note">一个月仅能修改一次哦～</p>
+		    <div id="know">
+				<a href="#" class="btn_cor" id="submit">确定</a>
+			</div>
+		    
+		    <!--<div class="bottom-tips">
+				<p class="tip">如有疑问,欢迎联系</p>
+				<p>电话:021-5418 8969</p>
+			</div>-->
+		</div>
+		<script type="text/javascript" src="../js/vendor/mui.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function(){
+//				获取上一页面传递过来的昵称
+				var nickName = plus.storage.getItem("nickName");
+				var changeName = document.getElementById('changeName');
+				changeName.focus();
+				changeName.value='';
+				changeName.value=nickName;
+//				plus.storage.removeItem('nickName');
+				var btn = document.getElementById('submit');
+				btn.addEventListener('tap',function(){
+					var changeName = document.getElementById('changeName');
+					mui.ajax({
+				        url: ajaxIp+'/api/v2/app/student_infos/modify_name',
+				        type: 'PATCH',
+				        data:{'name':changeName.value},
+				        headers: {'Authorization': "Bearer " + isLogin},
+				//		dataType: "JSON",
+				        success  : function(data){
+							if(data.error){
+								mui.toast(data.error)
+							}
+				            console.log(JSON.stringify(data));
+				            if(data.ok){
+				            		mui.toast('修改成功');
+				            		var self=plus.webview.currentWebview();   
+				                var old_back = mui.back;
+				                mui.back = function() {  
+				                    var wobj = plus.webview.getWebviewById('setting');//注意 HBuilder 是   1.html 的 ID  你如果1.html 有ID   要替换掉HBuilder，  
+				                    wobj.reload(true);  
+				                    old_back()  
+				                }  
+								mui.back();
+				            }
+				        },
+				        error    : function(xhr,type,errorThrown){
+				            mui.toast(type);
+				        }
+				    });
+				})
+				
+			})
+		
+		</script>
+	</body>
+</html>

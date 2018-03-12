@@ -1,0 +1,91 @@
+body {
+	background: #F4F4F4;
+}
+
+.person_list {
+	background: #FFFFFF;
+}
+
+.person_list:nth-of-type(1) li:nth-of-type(1) .wz {
+	height: .55rem;
+	line-height: .55rem;
+}
+
+.person_list:nth-of-type(1) li:nth-of-type(1) .people {
+	width: .55rem;
+	height: .55rem;
+	border-radius: 50%;
+	border: 1px solid #9c9c9c;
+	line-height: .55rem;
+	text-align: center;
+}
+
+.person_list:nth-of-type(1) li:nth-of-type(1) .people img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+}
+
+.person_list ul li {
+	border-bottom: 1px solid #CCCCCC;
+	padding: .1rem .2rem;
+}
+
+.person_list ul li {
+	border-top: none;
+}
+
+.person_list ul li .people {
+	color: #999;
+}
+
+.person_list ul li .wz {
+	color: #333;
+}
+
+.person_list:nth-of-type(2) {
+	margin: .18rem 0;
+}
+.bottom-tips{
+	margin-top:.16rem;
+}
+.bottom-tips .tip {
+	color: #ccc;
+	position: relative;
+	text-align: center;
+}
+
+.bottom-tips .tip:before,
+.bottom-tips .tip:after {
+	content: '';
+	position: absolute;
+	top: 52%;
+	background: #ccc;
+	width: 28%;
+	height: 1px;
+}
+
+.bottom-tips .tip:before {
+	left: 4%;
+}
+
+.bottom-tips .tip:after {
+	right: 4%;
+}
+
+.bottom-tips p:nth-of-type(2) {
+	text-align: center;
+	color: #ccc;
+}
+.logout {
+	padding: .3rem .16rem;
+}
+
+.logout .log_btn {
+	color: #fff;
+	padding: .1rem .2rem;
+	border-radius: 4px;
+	margin: 0 auto;
+	text-align: center;
+}

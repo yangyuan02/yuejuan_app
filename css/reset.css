@@ -1,0 +1,221 @@
+/********rest style***********/
+
+
+/*rest style start*/
+
+body,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+th,
+td,
+dl,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select {
+	margin: 0;
+	padding: 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+	font-size: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+
+/* set html5 elements to block */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+ul,
+div,
+article,
+aside,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: #666;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #f90;
+}
+
+li {
+	list-style: none;
+}
+
+
+/*container width*/
+
+.wrap {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+input[type=search] {
+	-webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+input,
+button,
+select,
+textarea {
+	border: 0 none;
+	outline: 0 none;
+	font-family: Arial, "Microsoft YaHei", "΢���ź�", sans-serif;
+}
+
+address,
+em,
+i {
+	font-style: normal;
+}
+
+.normal {
+	font-style: normal;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.none {
+	display: none;
+}
+
+.block {
+	display: block;
+}
+
+.inline {
+	display: inline;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+textarea {
+	resize: none;
+}
+
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+label {
+	cursor: pointer;
+}
+
+.tr {
+	text-align: right;
+}
+
+.tc {
+	text-align: center;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.cleafix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: "020";
+	clear: both;
+	height: 0;
+}
+
+.clearfix {
+	zoom: 1;
+	clear: both;
+}
+div a p button{
+    -webkit-touch-callout:none;
+    -moz-touch-callout:none;
+    -ms-touch-callout:none;
+      touch-callout:none;
+ }
+
+/*rest style end*/
+html{
+	height:100%;
+}
+body {
+	font-size: 12px;
+	height:100%;
+	color: #929292;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-overflow-scrolling: touch;
+	overflow-scrolling: touch;
+	min-width: 320px;
+	max-width: 540px;
+	overflow-x: hidden;
+	margin: 0 auto;
+	height: 100%;
+	font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}

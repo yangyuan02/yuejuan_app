@@ -1,0 +1,17 @@
+.exam{
+	padding:.28rem .28rem .28rem .28rem;
+	background:#f4f8fb;
+}
+.exam .exam_list{
+	padding:.28rem .28rem .28rem .28rem;
+	border:1px solid #ccc;
+	color:#fafafa;
+	height:5.6rem;
+}
+.exam .exam_list li{
+	color:#000;
+	line-height:.28rem;
+}
+.exam .exam_list li.active{
+	color: #2C94FF;
+}

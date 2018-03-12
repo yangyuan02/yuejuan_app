@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../css/exam_list.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+			if(document.documentElement.clientWidth >= 540) {
+				document.documentElement.style.fontSize = 540 / 3.75 + 'px';
+			}
+		</script>
+		<style type="text/css">
+			.help_btn{
+				position: fixed;
+				bottom: 0;
+				left:0;
+			}
+			#know{
+				display:flex;
+				justify-content: center;
+				margin-top:.8rem;
+			}
+			#know a{
+				width:100%;
+				height:.4rem;
+				line-height:.4rem;
+				display:inline-block;
+				text-align: center;
+				font-size:.16rem;
+				color:#fff;
+				border-radius:4px;
+			}
+			.iphone{
+				height: .51rem;
+				border-bottom:1px solid #2C94FF;
+				display: flex;
+				align-content: center;
+				padding:.1rem 0;
+			}
+			.iphone_icon{
+				height:.26rem;
+			}
+			.iphone_bar{
+				height:.26rem;
+				display:flex;
+				align-items:center;
+			}
+			.iphone_bar input{
+				height:.26rem;
+			}
+			.code_btn{
+				color:#fff;
+				border-radius:4px;
+				height:.3rem;
+				width:.8rem;
+				text-align: center;
+				line-height: .3rem;
+			}
+			.bind_box{
+				padding: 0 .24rem;
+				margin-top:28%;
+			}		
+		</style>
+	</head>
+
+	<body>
+		<div class="bind_box">
+			<div class="iphone">
+				<div class="iphone_icon"></div>
+				<div class="iphone_bar">
+					<i class="i-pass"></i>
+					<input type="password" name="" id="oldPass" value="" placeholder="请输入原始密码"/>
+				</div>
+			</div>
+			<div class="iphone">
+				<div class="iphone_icon"></div>
+				<div class="iphone_bar" style="width:70%;">
+					<i class="i-pass2"></i>
+					<input type="password" name="" id="newPass" value="" placeholder="请输入新密码"/>
+				</div>
+			</div>
+			<div class="iphone">
+				<div class="iphone_icon"></div>
+				<div class="iphone_bar">
+					<i class="i-key"></i>
+					<input type="password" name="" id="confirmPass" value="" placeholder="请确认密码"/>
+				</div>
+			</div>
+			<div id="know">
+				<a href="#" class="btn_cor" id="submit">确认</a>
+			</div>
+		</div>
+		<div class="help_btn">
+			<img src="../img/help_bg.png" width="100%"/>
+		</div>
+		<script type="text/javascript" src="../js/vendor/mui.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				var submit = document.getElementById("submit")
+				submit.addEventListener('tap',function(){
+					var oldPass = document.getElementById("oldPass")
+					var newPass = document.getElementById("newPass")
+					var confirmPass = document.getElementById("confirmPass")
+					if(verify.isEmpty(oldPass.value)) {
+						plus.nativeUI.toast("原始密码不能为空");
+						return false
+					}
+					
+					if(verify.isEmpty(newPass.value)) {
+						plus.nativeUI.toast("新密码不能为空");
+						return false
+					}
+					if(verify.isEmpty(confirmPass.value)) {
+						plus.nativeUI.toast("确认密码不能为空");
+						return false
+					}
+					if(newPass.value!==confirmPass.value){
+						plus.nativeUI.toast("两次密码不一样");
+						return false
+					}
+					if(oldPass.value==newPass.value){
+						plus.nativeUI.toast("新密码和原密码不能一样");
+						return false
+					}
+					//修改密码
+					mui.ajax({
+				        url: ajaxIp+'/api/v2/app/student_infos/modify_password',
+				        type: 'PATCH',
+				        headers: {'Authorization': "Bearer " + isLogin},
+				        data: {
+				        		'password': oldPass.value,
+				        		'new_password': newPass.value,
+				        },
+		//		        dataType: "JSON",
+				        success  : function(data){
+				            console.log(JSON.stringify(data));
+				            if(data.error){
+				            		mui.toast(data.error)
+				            }
+				            if(data.ok){
+				            		mui.toast('修改密码成功！');
+				            		var self=plus.webview.currentWebview();   
+				                var old_back = mui.back;
+				                mui.back = function() {  
+				                    var wobj = plus.webview.getWebviewById('setting');//注意 HBuilder 是   1.html 的 ID  你如果1.html 有ID   要替换掉HBuilder，  
+				                    wobj.reload(true);  
+				                    old_back()  
+				                }  
+								mui.back();
+				            }
+				        },
+				        error    : function(xhr,type,errorThrown){
+				            mui.toast(type);
+				        }
+				    });
+				},false)
+			})
+		</script>
+	</body>
+</html>

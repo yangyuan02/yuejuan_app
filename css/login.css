@@ -1,0 +1,46 @@
+body{
+	background:url(../img/login_bg.png) no-repeat;
+	background-size:100%;
+}
+.box{
+	position:relative;
+	top:3rem;
+	width:100%;
+	padding:0 .6rem;
+}
+.box .code{
+	margin-top:.3rem;
+}
+.box .tips a{
+	display:inline-block;
+	color:#3c9cfc;
+	text-decoration: underline;
+	margin-top:.1rem;
+}
+.box .white_line{
+	border-bottom:1px solid #FFFFFF;
+	display:flex;
+	align-items: center;
+}
+.box .white_line input{
+	background:none;
+}
+.box .white_line input::-webkit-input-placeholder{
+	color:#fff;
+}
+.login_btn{
+	text-align:center;
+	height:0.4rem;
+	line-height:0.4rem;
+	position: relative;
+	top:3.5rem;
+	width:100%;
+	padding:0 .25rem;
+}
+.login_btn a{
+	display:inline-block;
+	border-radius:4px;
+	width:100%;
+	color: #fff;
+	font-size:.12rem;
+}

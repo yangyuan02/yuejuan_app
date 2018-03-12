@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../css/exam_list.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+			if(document.documentElement.clientWidth >= 540) {
+				document.documentElement.style.fontSize = 540 / 3.75 + 'px';
+			}
+		</script>
+		<style type="text/css">
+			html{
+				height: auto;
+			}
+			.help_btn {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+			}
+			
+			#know {
+				display: flex;
+				justify-content: center;
+				margin-top: .8rem;
+			}
+			
+			#know a {
+				width: 100%;
+				height: .4rem;
+				line-height: .4rem;
+				display: inline-block;
+				text-align: center;
+				font-size: .16rem;
+				color: #fff;
+				border-radius: 4px;
+			}
+			
+			.iphone {
+				height: .51rem;
+				border-bottom: 1px solid #2C94FF;
+				display: flex;
+				align-content: center;
+				padding: .1rem 0;
+			}
+			
+			.iphone_icon {
+				height: .26rem;
+			}
+			
+			.iphone_bar {
+				height: .26rem;
+				display:flex;
+				align-items: center;
+			}
+			
+			.iphone_bar input {
+				height: .26rem;
+			}
+			
+			.code_btn {
+				color: #fff;
+				border-radius: 4px;
+				height: .3rem;
+				width: .8rem;
+				text-align: center;
+				line-height: .3rem;
+			}
+			
+			.bind_box {
+				padding: 0 .24rem;
+				margin-top: 28%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="bind_box">
+			<div class="iphone">
+				<div class="iphone_icon"></div>
+				<div class="iphone_bar">
+					<i class="i-tel"></i>
+					<input type="" name="" id="iphone" value="" placeholder="请输入绑定的手机号" />
+				</div>
+			</div>
+			<div class="iphone">
+				<div class="iphone_icon"></div>
+				<div class="iphone_bar" style="width:70%;">
+					<i class="i-key"></i>
+					<input type="" name="" id="code" value="" placeholder="请输入验证码" />
+				</div>
+				<div class="code_btn btn_cor" id="codeBtn">获取验证码</div>
+			</div>
+			<div class="iphone">
+				<div class="iphone_icon"></div>
+				<div class="iphone_bar">
+					<i class="i-pass"></i>
+					<input type="password" name="" id="pass" value="" placeholder="请输入新密码" />
+				</div>
+			</div>
+			<div class="iphone">
+				<div class="iphone_icon"></div>
+				<div class="iphone_bar">
+					<i class="i-pass"></i>
+					<input type="password" name="" id="newpass" value="" placeholder="请确定密码" />
+				</div>
+			</div>
+			<div id="know">
+				<a href="#" class="btn_cor" id="submit">提交</a>
+			</div>
+		</div>
+		<div class="help_btn">
+			<img src="../img/help_bg.png" width="100%" />
+		</div>
+		<script type="text/javascript" src="../js/vendor/mui.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				var sendBtn = document.getElementById("codeBtn")
+				var submit = document.getElementById("submit")
+				var iphone = document.getElementById("iphone")
+				var code = document.getElementById("code")
+				var pass = document.getElementById("pass")
+				var newPass = document.getElementById("newpass")
+				var flag = true
+				sendBtn.addEventListener("tap", function() {
+					if(verify.isEmpty(iphone.value)) {
+						plus.nativeUI.toast("手机号不能为空");
+						return false
+					}
+					if(verify.isIphone(iphone.value)) {
+						plus.nativeUI.toast("请输入正确的手机号");
+						return false
+					}
+					mui.ajax({
+				        url: ajaxIp+'/api/v2/app/send',
+				        type: 'GET',
+				        headers: {'Authorization': "Bearer " + isLogin},
+				        data: {
+				        		'phone': iphone.value,
+				        },
+		//		        dataType: "JSON",
+				        success  : function(data){
+		//		            mui.toast(data);
+				            console.log(data);
+				        },
+				        error    : function(xhr,type,errorThrown){
+				            mui.toast(type);
+				        }
+				    });
+					var wait = 60
+					var countDown = function() {
+						if(wait == 0) {
+							sendBtn.innerText = '重新获取'
+							wait = 60
+							flag = true
+						} else {
+							wait--
+							console.log(wait)
+							sendBtn.innerText = wait + '秒'
+							setTimeout(function() {
+								countDown()
+							}, 1000)
+							flag = false
+						}
+					}
+					if(flag) {
+						countDown()
+					}
+				}, false)
+				submit.addEventListener('tap', function() {
+					if(verify.isEmpty(code.value)){
+						plus.nativeUI.toast("验证码不能为空");
+						return false
+					}
+					if(verify.isEmpty(pass.value)){
+						plus.nativeUI.toast("新密码不能为空");
+						return false
+					}
+					if(verify.isEmpty(newPass.value)){
+						plus.nativeUI.toast("确认密码不能为空");
+						return false
+					}
+					if(verify.isEquel(pass.value,newPass.value)){
+						plus.nativeUI.toast("两次密码不一致");
+						return false
+					}
+//					重置密码
+					mui.ajax({
+				        url: ajaxIp+'/api/v2/app/reset_password',
+				        type: 'PATCH',
+				        data: {
+				        		'phone': iphone.value,
+				            'captcha': code.value,
+				            'new_password': pass.value
+				        },
+				        success  : function(data){
+//				            mui.toast(data);
+							console.log(JSON.stringify(data))
+
+				            if(data.error){
+				            		mui.toast(data.error)
+				            }
+				            if(data.ok){
+				            		mui.toast('密码重置成功');
+				            		mui.openWindow({
+									url: "./views/login.html",
+									id: "login"
+								});
+				            }
+				        },
+				        error    : function(xhr,type,errorThrown){
+				            mui.toast(type);
+				        }
+				    });
+				}, false)
+			})
+		</script>
+	</body>
+
+</html>
