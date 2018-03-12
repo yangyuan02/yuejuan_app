@@ -1,0 +1,40 @@
+.btn_cor{
+	background: -webkit-gradient(linear,center top,center bottom,from(#41b9ff), to(#2c94ff));
+}
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+.clearfix:after{ visibility: hidden; display: block; font-size: 0; content: "020"; clear: both; height: 0; }
+.clearfix {zoom: 1;clear:both;}
+i{
+	display:inline-block;
+	width:.27rem;
+	height:.27rem;
+}
+.i-xinghao{
+	background:url(../img/i-xing.png);
+	background-size:100%;
+}
+.i-pass{
+	background:url(../img/i-password.png);
+	background-size:100%;
+}
+.i-tel{
+	background:url(../img/i-tel.png);
+	background-size:100%;
+}
+.i-key{
+	background:url(../img/i-key.png);
+	background-size:100%;
+}
+.i-pass2{
+	background:url(../img/i-pass2.png);
+	background-size:100%;
+}
+.i-safe{
+	background:url(../img/i-safe.png);
+	background-size:100%;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../css/exam_list.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+			if(document.documentElement.clientWidth >= 540) {
+				document.documentElement.style.fontSize = 540 / 3.75 + 'px';
+			}
+		</script>
+		<style type="text/css">
+			.help_con{
+				padding-top: .58rem;
+				padding-left: .65rem;
+				padding-right:.65rem;
+			}
+			h2{
+				color:#333333;
+				font-size: .18rem;
+			}
+			p{
+				color: #666;
+				font-size:.16rem;
+			}
+			.mg2{
+				margin:.35rem 0;
+			}
+			.help_btn{
+				position: fixed;
+				bottom: 0;
+				left:0;
+			}
+			#know{
+				display:flex;
+				justify-content: center;
+				margin-top:.8rem;
+			}
+			#know a{
+				width:1.5rem;
+				height:.4rem;
+				line-height:.4rem;
+				display:inline-block;
+				text-align: center;
+				font-size:.16rem;
+				color:#fff;
+				border-radius:4px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="help_con">
+			<h2>什么是星号？</h2>
+			<p class="mg2">“星号”是学校提供你的唯一编号，通过这个编号可以方便找到你的学生信息。</p>
+			<h2 class="mg2">如果获得星号?</h2>
+			<p>用手机QQ或着微信扫一扫试卷上的学生信息条码，得出额数字即为你的星号。</p>
+			<div id="know">
+				<a href="#" class="btn_cor" id="isK">知道了</a>
+			</div>
+		</div>
+		<div class="help_btn">
+			<img src="../img/help_bg.png" width="100%"/>
+		</div>
+		<script type="text/javascript" src="../js/vendor/mui.js"></script>
+		<script type="text/javascript">
+			var knowBtn = document.getElementById("isK")
+			knowBtn.addEventListener('tap',function(){
+				mui.back()
+			},false)
+		</script>
+	</body>
+</html>

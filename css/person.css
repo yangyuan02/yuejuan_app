@@ -1,0 +1,40 @@
+.top_bg{
+	height:1.47rem;
+	background:url(../img/person_bg.png) no-repeat left top;
+	background-size:100%;
+}
+.person{
+	margin-top:.3rem;
+}
+.person .info_box{
+	width:150px;
+	margin:0 auto;
+}
+.person .info_box h2{
+	color:#000;
+	margin-bottom:.14rem;
+}
+.person .info_box p{
+	line-height: .28rem;
+}
+.line{
+	width:76%;
+	height:1px;
+	background:#2C94FF;
+	margin:0 auto;
+	margin-top:.3rem;
+}
+.confirm_btn{
+	width:100%;
+	padding:0 .41rem;
+	margin-top: .3rem;
+}
+.confirm_btn a{
+	color:#FFFFFF;
+	width:1.23rem;
+	height:.48rem;
+	line-height:.48rem;
+	text-align:center;
+	border-radius:4px;
+	font-size:.16rem;
+}

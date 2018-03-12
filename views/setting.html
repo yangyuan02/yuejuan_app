@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../css/setting.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
+			if(document.documentElement.clientWidth >= 540) {
+				document.documentElement.style.fontSize = 540 / 3.75 + 'px';
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="person_list">
+			<ul>
+				<!--onclick="inPath.click()"-->
+				<li class="cleafix" id="avatar" onclick="inPath.click()">
+					<div class="wz fl">
+						头像
+					</div>
+					<!--../img/avatar.png-->
+					<div class="people fr" >
+						<img src="" alt=""  style="display: block;"/>					
+					</div>
+					<input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="inPath" style="display:none;" />
+				</li>
+				<li class="cleafix" id="reviseNickname">
+					<div class="wz fl">
+						昵称
+					</div>
+					<div class="people fr">
+						<!--刘毅伟-->
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="person_list">
+			<ul>
+				<li class="cleafix" id="clearCache"  style='display:none'>
+					<div class="wz fl">
+						清除缓存
+					</div>
+					<div class="people fr" id="CacheData">
+						0.61M
+					</div>
+				</li>
+				<!--<li class="cleafix">
+					<div class="wz fl">
+						QQ绑定
+					</div>
+					<div class="people fr">
+						已绑定
+					</div>
+				</li>
+				<li class="cleafix">
+					<div class="wz fl">
+						微信绑定
+					</div>
+					<div class="people fr">
+						已绑定
+					</div>
+				</li>-->
+				<li  id="revisePass" style='display:none'>
+			
+				</li>
+				<li class="cleafix" id="reviseBindIphone"  style='display:none'>
+					<div class="wz fl" >
+						更改绑定手机
+					</div>
+					<div class="people fr">
+						<!--13781209179-->
+					</div>
+				</li>
+				<li class="cleafix" id="account" style='display:none'>
+					<div class="wz fl">
+						星号
+					</div>
+					<div class="people fr">
+						
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="person_list"  style='display:none'>
+			<ul>
+				<li class="cleafix">
+					<div class="wz fl">
+						关于我们
+					</div>
+					<div class="people fr">
+
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="bottom-tips">
+			<p class="tip">如有疑问,欢迎联系</p>
+			<p>电话:021-5418 8969</p>
+		</div>
+		<div class="logout">
+			<div class="log_btn btn_cor" id="logout">
+				退出登录
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/vendor/mui.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/setting.js"></script>
+	</body>
+</html>
